@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/egocentri/go-webcalc1/internal/handlers"
+	"github.com/egocentri/go-webcalc1/side/handlers"
 )
 
 func main() {
