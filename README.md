@@ -7,9 +7,9 @@
 
 ```git clone https://github.com/egocentri/go-webcalc1.git```          - клонирование репозитория
 
-```cd calc_service```          - переход к репозиторию
+```cd go-webcalc1```          - переход к репозиторию
 
-```go run ./cmd/calc_service/...```          - запуск сервиса
+```go run ./cmd/go-webcalc1/...```          - запуск сервиса
 
 вот такой вывод вы должны получить
 ```Listening and serving HTTP on :8080```
