@@ -17,6 +17,7 @@
 Убедитесь, что модуль github.com/gin-gonic/gin установлен:
 
 ```go get -u github.com/gin-gonic/gin```
+
 Если ошибка всё ещё появляется, выполните:
 ```
 go clean -modcache
