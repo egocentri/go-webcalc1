@@ -1,4 +1,4 @@
-module github.com/horhhe/calc_service
+module github.com/egocentri/go-webcalc1
 
 go 1.23.3
 
