@@ -39,4 +39,20 @@ go mod tidy
 ```curl --location 'http://localhost:8080/api/v1/calculate' --header 'Content-Type: application/json' --data '{"expression": "a"}'```
 
 Ответ:
-```{"error": ""}```
+```{"error": "expected number"}```
+
+Ошибка 500:
+Не успел реализовать, была идея симулировать непредвиденное поведение на сервере посылкой специальной фразы  "trigger500" в теле запроса. Что-то вроде
+```
+if req.Expression == "trigger500" {
+	panic("Simulated internal error")
+}
+```
+Сервер распарсит "trigger500" и вернет:
+
+```
+{
+  "error": "Internal server error"
+}
+```
+и статус 500.
