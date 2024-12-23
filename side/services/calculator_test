@@ -1,0 +1,58 @@
+package services
+
+import (
+	"testing"
+)
+
+func TestCalcValidExpressions(t *testing.T) {
+	testCases := []struct {
+		expression string
+		expected   float64
+	}{
+		{"1+2", 1 + 2},
+		{"2*3", 2 * 3},
+		{"4/2", 4 / 2},
+		{"10-7", 10 - 7},
+		{"(2+3)*4", (2 + 3) * 4},
+		{"10/(2+3)", 10 / (2 + 3)},
+		{"-5+8", -5 + 8},
+		{"5*-2", 5 * -2},
+		{"2.5+2.5", 2.5 + 2.5},
+		{"(2+3)*(4-1)", (2 + 3) * (4 - 1)},
+	}
+
+	for _, testCase := range testCases {
+		t.Run(testCase.expression, func(t *testing.T) {
+			result, err := Calc(testCase.expression)
+			if err != nil {
+				t.Errorf("Calc(%s) error: %v", testCase.expression, err)
+			} else if result != testCase.expected {
+				t.Errorf("Calc(%s) = %v, want %v", testCase.expression, result, testCase.expected)
+			}
+		})
+	}
+}
+
+func TestCalcInvalidExpressions(t *testing.T) {
+	testCases := []string{
+		"10/0",      // Division by zero
+		"(2+3",      // Missing closing parenthesis
+		"5**2",      // Unsupported operator
+		"abc",       // Non-numeric characters
+		"2+*3",      // Invalid operator sequence
+		"",          // Empty string
+		"(10)/0",    // Division by zero in parentheses
+		"10 + (2 *",  // Incomplete expression
+		"++1",       // Invalid leading operator
+		"10 / (5 - 5)", // Division by zero in nested expression
+	}
+
+	for _, testCase := range testCases {
+		t.Run(testCase, func(t *testing.T) {
+			_, err := Calc(testCase)
+			if err == nil {
+				t.Errorf("Calc(%s) error is nil, want error", testCase)
+			}
+		})
+	}
+}
