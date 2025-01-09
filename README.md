@@ -13,7 +13,7 @@
 
 вот такой вывод вы должны получить
 ```Listening and serving HTTP on :8080```
-# Если не запускается
+# Если не запускается (НЕ АКТУАЛЬНО)
 Убедитесь, что модуль github.com/gin-gonic/gin установлен:
 
 ```go get -u github.com/gin-gonic/gin```
